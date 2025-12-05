@@ -1,0 +1,72 @@
+{
+  "project_name": "My Agentic Project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-').replace('_', '-') }}",
+  "project_short_description": "A brief description of your project",
+  "author_name": "Your Name",
+  "author_email": "your.email@example.com",
+  "github_username": "yourusername",
+  "version": "0.1.0",
+  "license": [
+    "MIT",
+    "Apache-2.0",
+    "GPL-3.0",
+    "BSD-3-Clause",
+    "Proprietary"
+  ],
+  "project_type": [
+    "fullstack",
+    "backend",
+    "frontend",
+    "cli",
+    "library",
+    "other"
+  ],
+  "backend_language": [
+    "python",
+    "typescript",
+    "javascript",
+    "go",
+    "rust",
+    "java",
+    "none"
+  ],
+  "backend_framework": [
+    "fastapi",
+    "django",
+    "flask",
+    "express",
+    "nestjs",
+    "gin",
+    "actix",
+    "spring-boot",
+    "none"
+  ],
+  "frontend_framework": [
+    "react",
+    "vue",
+    "angular",
+    "svelte",
+    "solid",
+    "vanilla",
+    "none"
+  ],
+  "database": [
+    "postgresql",
+    "mysql",
+    "mongodb",
+    "sqlite",
+    "redis",
+    "none"
+  ],
+  "use_docker": "yes",
+  "use_ci_cd": "yes",
+  "ci_platform": [
+    "github-actions",
+    "gitlab-ci",
+    "circleci",
+    "jenkins"
+  ],
+  "include_tests": "yes",
+  "include_docs": "yes",
+  "use_copilot_agents": "yes"
+}
