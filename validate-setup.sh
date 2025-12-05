@@ -47,20 +47,26 @@ check_directory() {
 
 # Function to check file size (ensure it has content)
 check_file_size() {
-    if [ -f "$1" ]; then
-        SIZE=$(wc -c < "$1" 2>/dev/null || echo 0)
-        if [ "$SIZE" -gt "$2" ]; then
-            echo -e "${GREEN}✓${NC} $3 has substantial content ($SIZE bytes)"
-            ((PASSED++))
-            return 0
-        else
-            echo -e "${YELLOW}⚠${NC} $3 seems small ($SIZE bytes, expected >$2)"
-            ((WARNINGS++))
-            return 1
-        fi
-    else
+    if [ ! -f "$1" ]; then
         echo -e "${RED}✗${NC} $3 not found"
         ((FAILED++))
+        return 1
+    fi
+    
+    SIZE=$(wc -c < "$1" 2>/dev/null)
+    if [ $? -ne 0 ] || [ -z "$SIZE" ]; then
+        echo -e "${RED}✗${NC} $3 could not determine file size"
+        ((FAILED++))
+        return 1
+    fi
+    
+    if [ "$SIZE" -gt "$2" ]; then
+        echo -e "${GREEN}✓${NC} $3 has substantial content ($SIZE bytes)"
+        ((PASSED++))
+        return 0
+    else
+        echo -e "${YELLOW}⚠${NC} $3 seems small ($SIZE bytes, expected >$2)"
+        ((WARNINGS++))
         return 1
     fi
 }
